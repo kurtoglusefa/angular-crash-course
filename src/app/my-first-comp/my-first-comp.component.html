@@ -1,7 +1,7 @@
 <!--<p>my-first-comp works!</p>-->
 <div class="form-container">
   <h2>Simple Form</h2>
-    <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="name">Name:</label>
       <input
@@ -22,40 +22,48 @@
       <label for="message">Message:</label>
       <textarea id="message" rows="4" [(ngModel)]="message" name="message" required></textarea>
     </div>
-<!--    <button type="submit" (click)="onSubmit()">Submit</button>-->
+    <!--    <button type="submit" (click)="onSubmit()">Submit</button>-->
     <button type="submit">Submit</button>
   </form>
 
-<!--  @if (isSubmitted) {-->
-<!--    <div>-->
-<!--      <h3>Form Data:</h3>-->
-<!--      <p><strong>Name:</strong> {{ name }}</p>-->
-<!--      <p><strong>Email:</strong> {{ email }}</p>-->
-<!--      <p><strong>Message:</strong>{{ message }}</p>-->
-<!--    </div>-->
-<!--  }-->
+  <!--  @if (isSubmitted) {-->
+  <!--    <div>-->
+  <!--      <h3>Form Data:</h3>-->
+  <!--      <p><strong>Name:</strong> {{ name }}</p>-->
+  <!--      <p><strong>Email:</strong> {{ email }}</p>-->
+  <!--      <p><strong>Message:</strong>{{ message }}</p>-->
+  <!--    </div>-->
+  <!--  }-->
+
+  <!--  @if (isSubmitted) {-->
+  <!--    <table>-->
+  <!--      <thead>-->
+  <!--      <tr>-->
+  <!--        <th>#</th>-->
+  <!--        <th>Name</th>-->
+  <!--        <th>Email</th>-->
+  <!--        <th>Message</th>-->
+  <!--      </tr>-->
+  <!--      </thead>-->
+  <!--      <tbody>-->
+  <!--        @for (msg of messages; track $index; let i = $index) {-->
+  <!--          <tr>-->
+  <!--            <td>{{ i + 1 }}</td>-->
+  <!--            <td>{{ msg.name }}</td>-->
+  <!--            <td>{{ msg.email }}</td>-->
+  <!--            <td>{{ msg.message }}</td>-->
+  <!--          </tr>-->
+  <!--        }-->
+  <!--      </tbody>-->
+  <!--    </table>-->
+  <!--  }-->
 
   @if (isSubmitted) {
-    <table>
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Message</th>
-      </tr>
-      </thead>
-      <tbody>
-        @for (msg of messages; track $index; let i = $index) {
-          <tr>
-            <td>{{ i + 1 }}</td>
-            <td>{{ msg.name }}</td>
-            <td>{{ msg.email }}</td>
-            <td>{{ msg.message }}</td>
-          </tr>
-        }
-      </tbody>
-    </table>
+    <div class="flex-container">
+      @for (msg of messages; track $index; let i = $index) {
+        <app-message-details [message]="msg" [index]="i" (delete)="deleteMessage($event)"></app-message-details>
+      }
+    </div>
   }
 
 

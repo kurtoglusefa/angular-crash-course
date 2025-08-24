@@ -1,10 +1,12 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {MessageDetails} from '../message-details/message-details.component';
 
 @Component({
   selector: 'app-my-first-comp',
   imports: [
-    FormsModule
+    FormsModule,
+    MessageDetails
   ],
   templateUrl: './my-first-comp.component.html',
   styleUrl: './my-first-comp.component.scss'
@@ -26,5 +28,9 @@ export class MyFirstCompComponent {
       'message': this.message
     });
     console.log(this.messages);
+  }
+
+  deleteMessage(index: number) {
+    this.messages.splice(index, 1);
   }
 }
