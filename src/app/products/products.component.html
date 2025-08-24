@@ -1,0 +1,8 @@
+<!--<app-product-details-->
+<!--  *ngFor="let product of products"-->
+<!--  [product]="product"-->
+<!--&gt;</app-product-details>-->
+
+@for (product of products; track product) {
+  <app-product-details [product]="product"></app-product-details>
+}
